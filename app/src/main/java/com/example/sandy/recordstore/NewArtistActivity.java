@@ -43,7 +43,7 @@ public class NewArtistActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void onClickButtonCancel(View view) {
+    public void onCancelButtonClick(View view) {
         Intent intent = new Intent(NewArtistActivity.this, ArtistsActivity.class);
         startActivity(intent);
     }

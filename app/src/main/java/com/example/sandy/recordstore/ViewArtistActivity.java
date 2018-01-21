@@ -5,6 +5,7 @@ import android.graphics.Movie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class ViewArtistActivity extends AppCompatActivity {
     Button editButton;
     Button deleteButton;
     Button backButton;
+    Artist artist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,32 @@ public class ViewArtistActivity extends AppCompatActivity {
         backButton = findViewById(R.id.button_back);
 
         Intent intent = getIntent();
-        Artist artist = (Artist)intent.getSerializableExtra("artist");
-        Log.d(this.getClass().toString(), artist.getName());
-        nameTextView.setText(artist.getName());
+        this.artist = (Artist)intent.getSerializableExtra("artist");
+        Log.d(this.getClass().toString(), this.artist.getName());
+        nameTextView.setText(this.artist.getName());
+    }
+
+    public void onEditButtonClick(View view) {
+        Intent intent = new Intent(this, EditArtistActivity.class);
+        intent.putExtra("artist", this.artist);
+        startActivity(intent);
+    }
+
+    public void onDeleteButtonClick(View view) {
+        final Artist artistToDelete = this.artist;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(this.getClass().toString(), "Deleting Artist: " + artistToDelete.getName());
+                App.get().getDB().artistDao().delete(artistToDelete);
+                Intent intent = new Intent(ViewArtistActivity.this, ArtistsActivity.class);
+                startActivity(intent);
+            }
+        }).start();
+    }
+
+    public void onBackButtonClick(View view) {
+        Intent intent = new Intent(this, ArtistsActivity.class);
+        startActivity(intent);
     }
 }
