@@ -20,7 +20,9 @@
         <activity android:name=".ArtistsActivity" />
         <activity android:name=".NewArtistActivity" />
         <activity android:name=".EditArtistActivity" />
-        <activity android:name=".ViewArtistActivity"></activity>
+        <activity android:name=".ViewArtistActivity" />
+        <activity android:name=".AlbumsActivity" />
+        <activity android:name=".NewAlbumActivity"></activity>
     </application>
 
 </manifest>

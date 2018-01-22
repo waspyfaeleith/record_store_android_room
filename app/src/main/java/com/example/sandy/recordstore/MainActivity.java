@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.d(this.getClass().toString(), "ON CREATE CALLED");
-        this.seedData();
+        //this.seedData();
     }
 
     private void seedData() {
@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickArtists(View view) {
         Intent intent = new Intent(MainActivity.this, ArtistsActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickAlbums(View view) {
+        Intent intent = new Intent(MainActivity.this, AlbumsActivity.class);
         startActivity(intent);
     }
 }

@@ -1,15 +1,29 @@
 package com.example.sandy.recordstore.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity(foreignKeys = @ForeignKey(entity = Artist.class,
+        parentColumns = "id",
+        childColumns = "artistId",
+        onDelete = CASCADE))
 public class Album {
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "title")
     private String title;
 
     private int artistId;
 
+    @ColumnInfo(name = "quantity")
     private int quantity;
-    private Artist artist;
+    //private Artist artist;
 
     public Album() {
 
@@ -21,11 +35,11 @@ public class Album {
         this.quantity = quantity;
     }
 
-    public Album(String title, Artist artist, int quantity) {
-        this.title = title;
-        this.artist = artist;
-        this.quantity = quantity;
-    }
+//    public Album(String title, Artist artist, int quantity) {
+//        this.title = title;
+//        this.artist = artist;
+//        this.quantity = quantity;
+//    }
 
     public int getId() {
         return id;
@@ -51,13 +65,13 @@ public class Album {
         this.title = title;
     }
 
-    public Artist getArtist() {
-        return this.artist;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
-    }
+//    public Artist getArtist() {
+//        return this.artist;
+//    }
+//
+//    public void setArtist(Artist artist) {
+//        this.artist = artist;
+//    }
 
     public int getQuantity() {
         return quantity;

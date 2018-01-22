@@ -23,7 +23,7 @@ public class ArtistsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_artists);
 
         artistListView = findViewById(R.id.artists_list);
-        newArtistButton = findViewById(R.id.button_add);
+        newArtistButton = findViewById(R.id.btn_add_artist);
 
         new Thread(new Runnable() {
             @Override

@@ -31,7 +31,7 @@ public class App extends Application {
         super.onCreate();
 
         this.database = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, DATABASE_NAME).build();
+                AppDatabase.class, DATABASE_NAME).build();//fallbackToDestructiveMigration().build();
 
         INSTANCE = this;
     }

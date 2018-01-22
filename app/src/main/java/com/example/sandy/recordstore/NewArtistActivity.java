@@ -10,8 +10,6 @@ import android.widget.EditText;
 
 import com.example.sandy.recordstore.models.Artist;
 
-import java.util.List;
-
 public class NewArtistActivity extends AppCompatActivity {
 
     EditText nameEditText;
@@ -24,7 +22,7 @@ public class NewArtistActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_artist);
 
         this.nameEditText = findViewById(R.id.artist_name);
-        this.saveButton = findViewById(R.id.button_add);
+        this.saveButton = findViewById(R.id.btn_add_artist);
         this.cancelButton = findViewById(R.id.button_cancel);
     }
 

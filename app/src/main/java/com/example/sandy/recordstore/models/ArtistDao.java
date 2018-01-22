@@ -32,4 +32,7 @@ public interface ArtistDao {
 
     @Insert
     void deleteAll(Artist... artists);
+
+    @Query("SELECT * FROM album where artistId = :id")
+    List<Album> getAlbums(int id);
 }
