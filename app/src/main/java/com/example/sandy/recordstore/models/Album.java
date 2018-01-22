@@ -19,6 +19,7 @@ public class Album {
     @ColumnInfo(name = "title")
     private String title;
 
+    @ColumnInfo(name = "artistId")
     private int artistId;
 
     @ColumnInfo(name = "quantity")
@@ -29,7 +30,7 @@ public class Album {
 
     }
 
-    public Album(String title, int artistID, int quantity) {
+    public Album(String title, int artistId, int quantity) {
         this.title = title;
         this.artistId = artistId;
         this.quantity = quantity;
@@ -50,7 +51,7 @@ public class Album {
     }
 
     public int getArtistId() {
-        return artistId;
+        return this.artistId;
     }
 
     public void setArtistId(int artistId) {

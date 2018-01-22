@@ -35,13 +35,16 @@ public class NewArtistActivity extends AppCompatActivity {
                 Artist newArtist = new Artist(name);
                 Log.d(this.getClass().toString(), "Adding new Artist: " + newArtist.getName());
                 App.get().getDB().artistDao().insert(newArtist);
-                Intent intent = new Intent(NewArtistActivity.this, ArtistsActivity.class);
-                startActivity(intent);
+                goBackToList();
             }
         }).start();
     }
 
     public void onCancelButtonClick(View view) {
+        this.goBackToList();
+    }
+
+    private void goBackToList() {
         Intent intent = new Intent(NewArtistActivity.this, ArtistsActivity.class);
         startActivity(intent);
     }

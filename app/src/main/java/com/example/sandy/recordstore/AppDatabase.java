@@ -12,7 +12,7 @@ import com.example.sandy.recordstore.models.ArtistDao;
  * Created by sandy on 21/01/2018.
  */
 
-@Database(entities = {Artist.class, Album.class}, version = 2)
+@Database(entities = {Artist.class, Album.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ArtistDao artistDao();
     public abstract AlbumDao albumDao();

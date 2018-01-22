@@ -21,6 +21,9 @@ public interface ArtistDao {
     @Query("SELECT * FROM artist where id = :id")
     Artist getById(int id);
 
+    @Query("SELECT * FROM artist where name = :name")
+    Artist getByName(String name);
+
     @Insert
     void insert(Artist artist);
 

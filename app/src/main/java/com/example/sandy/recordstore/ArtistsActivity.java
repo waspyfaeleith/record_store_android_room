@@ -60,4 +60,9 @@ public class ArtistsActivity extends AppCompatActivity {
         intent.putExtra("artist", artist);
         startActivity(intent);
     }
+
+    public void onHomeButtonClicked(View view) {
+        Intent intent = new Intent(ArtistsActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

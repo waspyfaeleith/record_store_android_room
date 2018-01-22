@@ -30,8 +30,11 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         Album currentAlbum = getItem(position);
         Log.d(this.getClass().toString(),currentAlbum.getTitle());
 
-        TextView name = listItemView.findViewById(R.id.title);
-        name.setText(currentAlbum.getTitle());
+        TextView title = listItemView.findViewById(R.id.txt_title);
+        title.setText(currentAlbum.getTitle());
+
+        TextView quantity = listItemView.findViewById(R.id.txt_artist);
+        quantity.setText(String.valueOf(currentAlbum.getQuantity()));
 
         listItemView.setTag(currentAlbum);
         return listItemView;

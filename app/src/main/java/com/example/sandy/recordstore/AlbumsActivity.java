@@ -53,4 +53,9 @@ public class AlbumsActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void onHomeButtonClicked(View view) {
+        Intent intent = new Intent(AlbumsActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.sandy.recordstore;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.sandy.recordstore.models.Album;
 import com.example.sandy.recordstore.models.Artist;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.List;
 public class NewAlbumActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener {
 
-    EditText nameEditText;
+    EditText titleEditText;
     Spinner artistSpinner;
     EditText quantityEditText;
     Button saveButton;
@@ -30,7 +32,7 @@ public class NewAlbumActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_album);
 
-        nameEditText = findViewById(R.id.txt_title);
+        titleEditText = findViewById(R.id.txt_title);
         quantityEditText = findViewById(R.id.txt_quantity);
         artistSpinner = findViewById(R.id.spinner_artist);
         saveButton = findViewById(R.id.btn_save);
@@ -56,11 +58,11 @@ public class NewAlbumActivity extends AppCompatActivity implements
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, artistNames);
 
-
         dataAdapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         this.artistSpinner.setAdapter(dataAdapter);
+        this.artistSpinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -77,5 +79,32 @@ public class NewAlbumActivity extends AppCompatActivity implements
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
 
+    }
+
+    public void onSaveButtonClicked(View view) {
+        final String title = this.titleEditText.getText().toString();
+        final String artistName = this.artistSpinner.getSelectedItem().toString();
+        final int quantity = Integer.parseInt(quantityEditText.getText().toString());
+        //Toast.makeText(NewAlbumActivity.this, "saving: " + title + "-" + artistName + "-" + quantity,
+        //       Toast.LENGTH_LONG).show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Artist artist= App.get().getDB().artistDao().getByName(artistName);
+                Album album = new Album(title, artist.getId(), quantity);
+                App.get().getDB().albumDao().insert(album);
+            }
+        }).start();
+
+        this.goBackToList();
+    }
+
+    public void onCancelButtonClicked(View view) {
+        this.goBackToList();
+    }
+
+    private void goBackToList() {
+        Intent intent = new Intent(NewAlbumActivity.this, AlbumsActivity.class);
+        startActivity(intent);
     }
 }
