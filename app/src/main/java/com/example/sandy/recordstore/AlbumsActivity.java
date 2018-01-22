@@ -58,4 +58,13 @@ public class AlbumsActivity extends AppCompatActivity {
         Intent intent = new Intent(AlbumsActivity.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void onListItemClick(View listItem) {
+        Album album = (Album) listItem.getTag();
+        Log.d(this.getClass().toString(), album.getTitle());
+
+        Intent intent = new Intent(this, ViewAlbumActivity.class);
+        intent.putExtra("album", album);
+        startActivity(intent);
+    }
 }

@@ -39,15 +39,18 @@ public class EditArtistActivity extends AppCompatActivity {
                 artistToUpdate.setName(name);
                 Log.d(this.getClass().toString(), "Updating Artist: " + artistToUpdate.getName());
                 App.get().getDB().artistDao().update(artistToUpdate);
-                Intent intent = new Intent(EditArtistActivity.this, ArtistsActivity.class);
-                startActivity(intent);
+                goBackToList();
             }
         }).start();
 
     }
 
     public void onCancelButtonClick(View v) {
-        Intent intent = new Intent(this, ArtistsActivity.class);
+        this.goBackToList();
+    }
+
+    private void goBackToList() {
+        Intent intent = new Intent(EditArtistActivity.this, ArtistsActivity.class);
         startActivity(intent);
     }
 }

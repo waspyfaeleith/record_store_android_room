@@ -5,13 +5,15 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
+
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(foreignKeys = @ForeignKey(entity = Artist.class,
         parentColumns = "id",
         childColumns = "artistId",
         onDelete = CASCADE))
-public class Album {
+public class Album implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;

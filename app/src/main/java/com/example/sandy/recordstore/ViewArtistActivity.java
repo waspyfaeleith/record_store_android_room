@@ -48,14 +48,17 @@ public class ViewArtistActivity extends AppCompatActivity {
             public void run() {
                 Log.d(this.getClass().toString(), "Deleting Artist: " + artistToDelete.getName());
                 App.get().getDB().artistDao().delete(artistToDelete);
-                Intent intent = new Intent(ViewArtistActivity.this, ArtistsActivity.class);
-                startActivity(intent);
+                goBackToList();
             }
         }).start();
     }
 
     public void onBackButtonClick(View view) {
-        Intent intent = new Intent(this, ArtistsActivity.class);
+        this.goBackToList();
+    }
+
+    private void goBackToList() {
+        Intent intent = new Intent(ViewArtistActivity.this, ArtistsActivity.class);
         startActivity(intent);
     }
 }
