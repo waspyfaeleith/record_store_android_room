@@ -17,12 +17,11 @@ import com.example.sandy.recordstore.models.Artist;
 import java.util.List;
 
 /**
- * Created by sandy on 22/01/2018.
+ * Created by sandy on 23/01/2018.
  */
 
-public class AlbumAdapter extends ArrayAdapter<Album> {
-
-    public AlbumAdapter(Context context, List<Album> albums) {
+public class ArtistAlbumAdapter extends ArrayAdapter<Album> {
+    public ArtistAlbumAdapter(Context context, List<Album> albums) {
         super(context, 0, albums);
     }
 
@@ -38,19 +37,8 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         TextView title = listItemView.findViewById(R.id.txt_title);
         title.setText(currentAlbum.getTitle());
 
-        final TextView artistText = listItemView.findViewById(R.id.txt_info);
+        TextView artistText = listItemView.findViewById(R.id.txt_info);
         artistText.setText(String.valueOf(currentAlbum.getQuantity()));
-
-        Context context = getContext();
-        if (context instanceof AlbumsActivity) {
-            ((AlbumsActivity) context).runOnUiThread (new Runnable() {
-                @Override
-                public void run() {
-                    Artist artist = App.get().getDB().artistDao().getById(currentAlbum.getArtistId());
-                    artistText.setText(artist.getName());
-                }
-            });
-        }
 
         listItemView.setTag(currentAlbum);
         return listItemView;

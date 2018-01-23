@@ -6,11 +6,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.sandy.recordstore.App;
 import com.example.sandy.recordstore.R;
+import com.example.sandy.recordstore.adapters.AlbumAdapter;
+import com.example.sandy.recordstore.models.Album;
 import com.example.sandy.recordstore.models.Artist;
+
+import java.util.List;
 
 public class ViewArtistActivity extends AppCompatActivity {
 
@@ -18,6 +23,7 @@ public class ViewArtistActivity extends AppCompatActivity {
     Button editButton;
     Button deleteButton;
     Button backButton;
+    ListView albumListView;
     Artist artist;
 
     @Override
@@ -29,11 +35,33 @@ public class ViewArtistActivity extends AppCompatActivity {
         editButton = findViewById(R.id.button_edit);
         deleteButton = findViewById(R.id.button_delete);
         backButton = findViewById(R.id.button_back);
+        albumListView = findViewById(R.id.albums_list);
 
         Intent intent = getIntent();
         this.artist = (Artist)intent.getSerializableExtra("artist");
         Log.d(this.getClass().toString(), this.artist.getName());
         nameTextView.setText(this.artist.getName());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<Album> albums = App.get().getDB().artistDao().getAlbums(artist.getId());
+                for (Album album : albums) {
+                    Log.d(this.getClass().toString(), album.getTitle());
+                }
+                populateAlbums(albums);
+            }
+        }).start();
+    }
+
+    private void populateAlbums(final List<Album> albums) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlbumAdapter albumAdapter = new AlbumAdapter(getBaseContext(), albums);
+                albumListView.setAdapter(albumAdapter);
+            }
+        });
     }
 
     public void onEditButtonClick(View view) {

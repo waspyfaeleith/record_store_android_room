@@ -21,13 +21,11 @@
     <Button
         android:id="@+id/button_edit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="80dp"
         android:onClick="onEditButtonClick"
         android:text="@string/edit"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/artist_name" />
 
@@ -37,28 +35,37 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:onClick="onDeleteButtonClick"
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_edit" />
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/button_back"
+        app:layout_constraintTop_toBottomOf="@+id/artist_name" />
 
     <Button
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="64dp"
         android:onClick="onBackButtonClick"
         android:text="@string/back"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintStart_toEndOf="@+id/button_edit"
+        app:layout_constraintTop_toBottomOf="@+id/artist_name"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <ListView
+        android:id="@+id/albums_list"
+        android:layout_width="416dp"
+        android:layout_height="458dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_delete"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
