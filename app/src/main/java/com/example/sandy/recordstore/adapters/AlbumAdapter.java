@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.sandy.recordstore.App;
 import com.example.sandy.recordstore.R;
+import com.example.sandy.recordstore.activities.albums.AlbumsActivity;
 import com.example.sandy.recordstore.models.Album;
 import com.example.sandy.recordstore.models.Artist;
 
@@ -19,6 +21,7 @@ import java.util.List;
  */
 
 public class AlbumAdapter extends ArrayAdapter<Album> {
+
     public AlbumAdapter(Context context, List<Album> albums) {
         super(context, 0, albums);
     }
@@ -35,17 +38,19 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         TextView title = listItemView.findViewById(R.id.txt_title);
         title.setText(currentAlbum.getTitle());
 
-        TextView artistText = listItemView.findViewById(R.id.txt_artist);
+        final TextView artistText = listItemView.findViewById(R.id.txt_artist);
         artistText.setText(String.valueOf(currentAlbum.getQuantity()));
 
-
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//               artist = App.get().getDB().artistDao().getById(currentAlbum.getArtistId());
-//            }
-//        }).start();
-//        artistText.setText(artist.getName());
+        Context context = getContext();
+        if (context instanceof AlbumsActivity) {
+            ((AlbumsActivity) context).runOnUiThread (new Runnable() {
+                @Override
+                public void run() {
+                    Artist artist = App.get().getDB().artistDao().getById(currentAlbum.getArtistId());
+                    artistText.setText(artist.getName());
+                }
+            });
+        }
 
         listItemView.setTag(currentAlbum);
         return listItemView;
