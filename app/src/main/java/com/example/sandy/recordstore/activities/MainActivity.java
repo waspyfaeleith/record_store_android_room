@@ -1,4 +1,4 @@
-package com.example.sandy.recordstore;
+package com.example.sandy.recordstore.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.sandy.recordstore.activities.albums.AlbumsActivity;
+import com.example.sandy.recordstore.App;
+import com.example.sandy.recordstore.activities.artists.ArtistsActivity;
+import com.example.sandy.recordstore.R;
 import com.example.sandy.recordstore.models.Album;
 import com.example.sandy.recordstore.models.Artist;
 

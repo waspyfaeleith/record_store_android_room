@@ -1,4 +1,4 @@
-package com.example.sandy.recordstore;
+package com.example.sandy.recordstore.adapters;
 
 import android.content.Context;
 import android.graphics.Movie;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.sandy.recordstore.R;
 import com.example.sandy.recordstore.models.Artist;
 
 import java.util.List;

@@ -1,7 +1,6 @@
-package com.example.sandy.recordstore;
+package com.example.sandy.recordstore.activities.artists;
 
 import android.content.Intent;
-import android.graphics.Movie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.sandy.recordstore.App;
+import com.example.sandy.recordstore.R;
 import com.example.sandy.recordstore.models.Artist;
 
 public class ViewArtistActivity extends AppCompatActivity {

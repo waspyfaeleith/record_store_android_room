@@ -10,21 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ArtistsActivity" />
-        <activity android:name=".NewArtistActivity" />
-        <activity android:name=".EditArtistActivity" />
-        <activity android:name=".ViewArtistActivity" />
-        <activity android:name=".AlbumsActivity" />
-        <activity android:name=".NewAlbumActivity" />
-        <activity android:name=".ViewAlbumActivity" />
-        <activity android:name=".EditAlbumActivity"></activity>
+        <activity android:name=".activities.artists.ArtistsActivity" />
+        <activity android:name=".activities.artists.NewArtistActivity" />
+        <activity android:name=".activities.artists.EditArtistActivity" />
+        <activity android:name=".activities.artists.ViewArtistActivity" />
+        <activity android:name=".activities.albums.AlbumsActivity" />
+        <activity android:name=".activities.albums.NewAlbumActivity" />
+        <activity android:name=".activities.albums.ViewAlbumActivity" />
+        <activity android:name=".activities.albums.EditAlbumActivity"></activity>
     </application>
 
 </manifest>

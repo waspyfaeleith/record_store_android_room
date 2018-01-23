@@ -1,4 +1,4 @@
-package com.example.sandy.recordstore;
+package com.example.sandy.recordstore.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.sandy.recordstore.R;
 import com.example.sandy.recordstore.models.Album;
 import com.example.sandy.recordstore.models.Artist;
 
@@ -23,7 +24,7 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
     }
 
     @Override
-    public View getView(int position, View listItemView, ViewGroup parent) {
+    public View getView(int position, View listItemView, final ViewGroup parent) {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.album_item, parent, false);
         }
@@ -34,17 +35,17 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         TextView title = listItemView.findViewById(R.id.txt_title);
         title.setText(currentAlbum.getTitle());
 
-        final TextView artistText = listItemView.findViewById(R.id.txt_artist);
+        TextView artistText = listItemView.findViewById(R.id.txt_artist);
         artistText.setText(String.valueOf(currentAlbum.getQuantity()));
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Artist artist = App.get().getDB().artistDao().getById(currentAlbum.getArtistId());
-                artistText.setText(artist.getName());
-            }
-        }).start();
 
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//               artist = App.get().getDB().artistDao().getById(currentAlbum.getArtistId());
+//            }
+//        }).start();
+//        artistText.setText(artist.getName());
 
         listItemView.setTag(currentAlbum);
         return listItemView;
