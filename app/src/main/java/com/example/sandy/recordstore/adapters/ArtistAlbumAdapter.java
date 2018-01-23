@@ -8,11 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.sandy.recordstore.App;
 import com.example.sandy.recordstore.R;
-import com.example.sandy.recordstore.activities.albums.AlbumsActivity;
 import com.example.sandy.recordstore.models.Album;
-import com.example.sandy.recordstore.models.Artist;
 
 import java.util.List;
 
@@ -37,7 +34,7 @@ public class ArtistAlbumAdapter extends ArrayAdapter<Album> {
         TextView title = listItemView.findViewById(R.id.txt_title);
         title.setText(currentAlbum.getTitle());
 
-        TextView artistText = listItemView.findViewById(R.id.txt_info);
+        TextView artistText = listItemView.findViewById(R.id.txt_artist);
         artistText.setText(String.valueOf(currentAlbum.getQuantity()));
 
         listItemView.setTag(currentAlbum);

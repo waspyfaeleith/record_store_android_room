@@ -3,6 +3,7 @@ package com.example.sandy.recordstore.models;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -26,7 +27,9 @@ public class Album implements Serializable {
 
     @ColumnInfo(name = "quantity")
     private int quantity;
-    //private Artist artist;
+
+    @Ignore
+    private Artist artist;
 
     public Album() {
 
@@ -68,13 +71,13 @@ public class Album implements Serializable {
         this.title = title;
     }
 
-//    public Artist getArtist() {
-//        return this.artist;
-//    }
-//
-//    public void setArtist(Artist artist) {
-//        this.artist = artist;
-//    }
+    public Artist getArtist() {
+        return this.artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
 
     public int getQuantity() {
         return quantity;

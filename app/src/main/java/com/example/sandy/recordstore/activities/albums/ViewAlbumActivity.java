@@ -29,7 +29,7 @@ public class ViewAlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_album);
 
         titleTextView = findViewById(R.id.txt_title);
-        artistTextView = findViewById(R.id.txt_info);
+        artistTextView = findViewById(R.id.txt_artist);
         quantityTextView = findViewById(R.id.txt_quantity);
         editButton = findViewById(R.id.button_edit);
         deleteButton = findViewById(R.id.button_delete);

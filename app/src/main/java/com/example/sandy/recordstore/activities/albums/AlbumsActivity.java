@@ -13,6 +13,7 @@ import com.example.sandy.recordstore.R;
 import com.example.sandy.recordstore.activities.MainActivity;
 import com.example.sandy.recordstore.adapters.AlbumAdapter;
 import com.example.sandy.recordstore.models.Album;
+import com.example.sandy.recordstore.models.Artist;
 
 import java.util.List;
 
@@ -34,6 +35,9 @@ public class AlbumsActivity extends AppCompatActivity {
             public void run() {
                 List<Album> albums = App.get().getDB().albumDao().getAll();
                 for (Album album : albums) {
+                    Log.d(this.getClass().toString(), album.getTitle());
+                    Artist artist = App.get().getDB().artistDao().getById(album.getArtistId());
+                    album.setArtist(artist);
                     Log.d(this.getClass().toString(), album.getTitle());
                 }
                 populateAlbums(albums);
