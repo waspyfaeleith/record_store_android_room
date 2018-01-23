@@ -44,7 +44,6 @@ public class ViewAlbumActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Artist artist = App.get().getDB().artistDao().getById(album.getArtistId());
-                goBackToList();
                 artistTextView.setText(artist.getName());
             }
         }).start();

@@ -63,7 +63,7 @@ public class AlbumsActivity extends AppCompatActivity {
         Album album = (Album) listItem.getTag();
         Log.d(this.getClass().toString(), album.getTitle());
 
-        Intent intent = new Intent(this, ViewAlbumActivity.class);
+        Intent intent = new Intent(AlbumsActivity.this, ViewAlbumActivity.class);
         intent.putExtra("album", album);
         startActivity(intent);
     }
