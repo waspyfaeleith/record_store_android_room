@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.sandy.recordstore.App;
 import com.example.sandy.recordstore.R;
-import com.example.sandy.recordstore.adapters.AlbumAdapter;
+import com.example.sandy.recordstore.adapters.ArtistAlbumAdapter;
 import com.example.sandy.recordstore.models.Album;
 import com.example.sandy.recordstore.models.Artist;
 
@@ -58,7 +58,7 @@ public class ViewArtistActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                AlbumAdapter albumAdapter = new AlbumAdapter(getBaseContext(), albums);
+                ArtistAlbumAdapter albumAdapter = new ArtistAlbumAdapter(getBaseContext(), albums);
                 albumListView.setAdapter(albumAdapter);
             }
         });
